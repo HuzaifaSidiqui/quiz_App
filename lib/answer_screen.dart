@@ -4,13 +4,18 @@ import 'package:quiz_app/summary_data.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AnswerScreen extends StatelessWidget {
-  const AnswerScreen({super.key, required this.chosenAnswer});
+  const AnswerScreen({
+    super.key,
+    required this.chosenAnswer,
+    required this.onRestart,
+  });
   final List<String> chosenAnswer;
+  final void Function() onRestart;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
 
-    for (var i = 0; i < chosenAnswer.length; i++) {
+    for (int i = 0; i < chosenAnswer.length; i++) {
       summary.add({
         'question_index': i,
         'question': questions[i].text,
@@ -44,7 +49,11 @@ class AnswerScreen extends StatelessWidget {
             SizedBox(height: 30),
             SummaryData(getData),
             SizedBox(height: 30),
-            TextButton(onPressed: () {}, child: Text('Restart the Quiz!!!')),
+            TextButton.icon(
+              onPressed: onRestart,
+              icon: Icon(Icons.refresh),
+              label: Text('Restart Quiz!!!'),
+            ),
           ],
         ),
       ),

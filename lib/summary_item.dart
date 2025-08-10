@@ -6,6 +6,13 @@ class SummaryItem extends StatelessWidget {
   const SummaryItem(this.itemData, {super.key});
   final Map<String, Object> itemData;
 
+  // int getIntValue(Map<String, Object> map, String key, {int defaultValue = 0}) {
+  //   final value = map[key];
+  //   if (value is int) return value;
+  //   if (value is String) return int.tryParse(value) ?? defaultValue;
+  //   return defaultValue;
+  // }
+
   @override
   Widget build(context) {
     final isCorrectAnswer =
@@ -13,10 +20,10 @@ class SummaryItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // QuestionIdentifier(
-        //   isCorrectAnswer: isCorrectAnswer,
-        //   questionIndex: itemData['question_index'] as int,
-        // ),
+        QuestionIdentifier(
+          isCorrectAnswer: isCorrectAnswer,
+          questionIndex: itemData['question_index'] as int,
+        ),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

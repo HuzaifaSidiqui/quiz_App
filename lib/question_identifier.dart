@@ -13,7 +13,7 @@ class QuestionIdentifier extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final questionNumber = questionIndex + 1;
+    int questionNumber = questionIndex + 1;
     return Container(
       width: 30,
       height: 30,
@@ -23,7 +23,7 @@ class QuestionIdentifier extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
       ),
       child: Text(
-        questionNumber as String,
+        questionNumber.toString(),
         style: GoogleFonts.lato(
           color: Colors.black,
           fontWeight: FontWeight.bold,
